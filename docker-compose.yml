@@ -1,0 +1,54 @@
+version: "3.8"
+
+services:
+  web:
+    image: nginx:1-alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./docker/pet-donation/backend/nginx/pet-donation-php.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./:/code
+      - ./docker/pet-donation/backend/php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
+    depends_on:
+      - app
+    networks:
+      - pet-donation
+
+  app:
+    build:
+      context: .
+      dockerfile: ./docker/pet-donation/backend/php/Dockerfile
+      args:
+        - APP_ENV=dev
+    working_dir: /code
+    env_file:
+      - .env
+    environment:
+      COMPOSER_MEMORY_LIMIT: -1
+    depends_on:
+      - db
+    links:
+      - db
+    volumes:
+      - ./:/code:delegated,rw
+    networks:
+      - pet-donation
+
+  db:
+    image: postgres:12-alpine
+    restart: always
+    environment:
+      POSTGRES_DB: "pet-donation"
+      POSTGRES_USER: "pet-donation"
+      POSTGRES_PASSWORD: "pet-donation"
+    ports:
+      - "5432:5432"
+    volumes:
+      - "./.docker/dbdata:/var/lib/postgresql/data"
+    networks:
+      - pet-donation
+
+networks:
+  pet-donation:
+    name: pet-donation
+    driver: bridge
