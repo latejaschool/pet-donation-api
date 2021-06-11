@@ -13,6 +13,7 @@ use Symfony\Component\Uid\Uuid;
 class User
 {
     /**
+     * @ORM\Id()
      * @ORM\Column(type="uuid")
      */
     private Uuid $id;
