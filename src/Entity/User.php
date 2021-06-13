@@ -17,7 +17,7 @@ class User
      * @ORM\Column(type="uuid")
      */
     private Uuid $id;
-    
+
     /**
      * @ORM\Column(type="string", length=100)
      */
@@ -56,17 +56,17 @@ class User
     /**
      * @ORM\Column(type="datetime")
      */
-    private DateTime $createdAt;
-    
+    private \DateTime $createdAt;
+
     /**
      * @ORM\Column(type="datetime")
      */
-    private DateTime $updatedAt;
-    
+    private \DateTime $updatedAt;
+
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private DateTime $deletedAt;
+    private \DateTime $deletedAt;
 
     public function getId(): Uuid
     {
@@ -96,6 +96,16 @@ class User
     public function setEmail(string $email): void
     {
         $this->email = $email;
+    }
+
+    public function getPhone(): string
+    {
+        return $this->phone;
+    }
+
+    public function setPhone(string $phone): void
+    {
+        $this->phone = $phone;
     }
 
     public function getPassword(): string
@@ -138,32 +148,32 @@ class User
         $this->roles = $roles;
     }
 
-    public function getCreatedAt(): DateTime
+    public function getCreatedAt(): \DateTime
     {
         return $this->createdAt;
     }
 
-    public function setCreatedAt(DateTime $createdAt): void
+    public function setCreatedAt(\DateTime $createdAt): void
     {
         $this->createdAt = $createdAt;
     }
 
-    public function getUpdatedAt(): DateTime
+    public function getUpdatedAt(): \DateTime
     {
         return $this->updatedAt;
     }
 
-    public function setUpdatedAt(DateTime $updatedAt): void
+    public function setUpdatedAt(\DateTime $updatedAt): void
     {
         $this->updatedAt = $updatedAt;
     }
 
-    public function getDeletedAt(): DateTime
+    public function getDeletedAt(): \DateTime
     {
         return $this->deletedAt;
     }
 
-    public function setDeletedAt(DateTime $deletedAt): void
+    public function setDeletedAt(\DateTime $deletedAt): void
     {
         $this->deletedAt = $deletedAt;
     }
