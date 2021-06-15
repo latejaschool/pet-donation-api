@@ -44,6 +44,7 @@ final class Version20210613221324 extends AbstractMigration
         $tableUser->addColumn('createdAt', Types::DATE_IMMUTABLE);
         $tableUser->addColumn('updatedAt', Types::DATE_MUTABLE);
         $tableUser->addColumn('deletedAt', Types::DATE_MUTABLE);
+        $tableUser->setPrimaryKey(['id']);
     }
 
     public function down(Schema $schema): void
