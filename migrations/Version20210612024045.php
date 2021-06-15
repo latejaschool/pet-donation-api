@@ -9,7 +9,7 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\Migrations\AbstractMigration;
 use Symfony\Bridge\Doctrine\Types\UuidType;
 
-final class Version20210611024045 extends AbstractMigration
+final class Version20210612024045 extends AbstractMigration
 {
     private const TABLE_PET = 'pet';
     private const TABLE_BREED = 'breed';
