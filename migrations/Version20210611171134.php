@@ -29,6 +29,7 @@ final class Version20210611171134 extends AbstractMigration
         $tableBreed->addColumn('description', Types::STRING, [
             'length' => 255,
         ]);
+        $tableBreed->setPrimaryKey(['id']);
     }
 
     public function down(Schema $schema): void
