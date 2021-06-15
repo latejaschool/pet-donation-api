@@ -11,11 +11,11 @@ use Symfony\Bridge\Doctrine\Types\UuidType;
 
 final class Version20210615194734 extends AbstractMigration
 {
-    private const TABLE_PETTYPE = 'petType';
+    private const TABLE_PETTYPE = 'pet_type';
 
     public function getDescription(): string
     {
-        return 'Adds/Removes petType table';
+        return 'Adds/Removes pet_type table';
     }
 
     public function up(Schema $schema): void

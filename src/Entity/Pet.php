@@ -29,7 +29,7 @@ class Pet
     private ?\DateTime $birth;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Breed")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Breed")
      * @ORM\JoinColumn(name="breed_id", referencedColumnName="id")
      */
     private Breed $breed;
