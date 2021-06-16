@@ -11,7 +11,7 @@ use Symfony\Bridge\Doctrine\Types\UuidType;
 
 final class Version20210613221324 extends AbstractMigration
 {
-    private const TABLE_USER = 'user';
+    private const TABLE_USER = 'pet_user';
 
     public function getDescription(): string
     {
@@ -41,9 +41,12 @@ final class Version20210613221324 extends AbstractMigration
         $tableUser->addColumn('status', Types::BOOLEAN);
         $tableUser->addColumn('photo', Types::STRING);
         $tableUser->addColumn('roles', Types::JSON);
-        $tableUser->addColumn('createdAt', Types::DATE_IMMUTABLE);
-        $tableUser->addColumn('updatedAt', Types::DATE_MUTABLE);
-        $tableUser->addColumn('deletedAt', Types::DATE_MUTABLE);
+        $tableUser->addColumn('created_at', Types::DATE_IMMUTABLE);
+        $tableUser->addColumn('updated_at', Types::DATE_MUTABLE);
+        $tableUser->addColumn('deleted_at', Types::DATE_MUTABLE, [
+            'notnull' => false,
+        ]);
+
         $tableUser->setPrimaryKey(['id']);
     }
 

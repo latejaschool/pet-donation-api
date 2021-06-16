@@ -9,6 +9,7 @@ use Symfony\Component\Uid\Uuid;
 
 /**
  * @ORM\Entity()
+ * @ORM\Table(name="pet_user")
  */
 class User
 {
