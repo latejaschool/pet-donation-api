@@ -27,12 +27,12 @@ final class Version20210615223255 extends AbstractMigration
         $tableNgo->addColumn('name', Types::STRING, [
             'length' => 100,
         ]);
-        $tableNgo->addColumn('socialName', Types::STRING, [
+        $tableNgo->addColumn('social_name', Types::STRING, [
             'length' => 100,
             'notnull' => false,
         ]);
         $tableNgo->addColumn('address_id', (new UuidType())->getName());
-        $tableNgo->addColumn('fiscalCode', Types::STRING, [
+        $tableNgo->addColumn('fiscal_code', Types::STRING, [
             'length' => 20,
             'notnull' => false,
         ]);
@@ -42,9 +42,11 @@ final class Version20210615223255 extends AbstractMigration
         $tableNgo->addColumn('phone', Types::STRING, [
             'length' => 11
         ]);
-        $tableNgo->addColumn('createdAt', Types::DATE_IMMUTABLE);
-        $tableNgo->addColumn('updatedAt', Types::DATE_MUTABLE);
-        $tableNgo->addColumn('deletedAt', Types::DATE_MUTABLE);
+        $tableNgo->addColumn('created_at', Types::DATE_IMMUTABLE);
+        $tableNgo->addColumn('updated_at', Types::DATE_MUTABLE);
+        $tableNgo->addColumn('deleted_at', Types::DATE_MUTABLE, [
+            'notnull' => false
+        ]);
         $tableNgo->setPrimaryKey(['id']);
         $tableNgo->addForeignKeyConstraint(self::TABLE_ADDRESS, ['address_id'], ['id']);
     }
