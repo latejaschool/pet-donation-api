@@ -22,7 +22,7 @@ final class Version20210612024045 extends AbstractMigration
     public function up(Schema $schema): void
     {
         $tablePet = $schema->createTable(self::TABLE_PET);
-        
+
         $tablePet->addColumn('id', (new UuidType())->getName());
         $tablePet->addColumn('name', Types::STRING, [
             'length' => 30,
@@ -38,9 +38,13 @@ final class Version20210612024045 extends AbstractMigration
         $tablePet->addColumn('available', Types::BOOLEAN);
         $tablePet->addColumn('diseases', Types::STRING);
         $tablePet->addColumn('vaccines', Types::STRING);
-        $tablePet->addColumn('createdAt', Types::DATE_IMMUTABLE);
-        $tablePet->addColumn('updatedAt', Types::DATETIME_MUTABLE);
-        $tablePet->addColumn('deletedAt', Types::DATETIME_MUTABLE);
+        $tablePet->addColumn('created_at', Types::DATE_IMMUTABLE);
+        $tablePet->addColumn('updated_at', Types::DATETIME_MUTABLE, [
+            'notnull' => false
+        ]);
+        $tablePet->addColumn('deleted_at', Types::DATETIME_MUTABLE, [
+            'notnull' => false
+        ]);
         $tablePet->setPrimaryKey(['id']);
         $tablePet->addForeignKeyConstraint(self::TABLE_BREED, ['breed_id'], ['id']);
     }
