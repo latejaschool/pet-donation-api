@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Uid\Uuid;
 
 /**
- * ORM\Entity()
+ * @ORM\Entity()
  */
 class NGO
 {
@@ -60,7 +60,7 @@ class NGO
     private \Datetime $updatedAt;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private \Datetime $deletedAt;
 
