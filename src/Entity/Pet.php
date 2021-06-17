@@ -79,6 +79,11 @@ class Pet
         return $this->id;
     }
 
+    public function setId(Uuid $id): void
+    {
+        $this->id = $id;
+    }
+
     public function getName(): string
     {
         return $this->name;

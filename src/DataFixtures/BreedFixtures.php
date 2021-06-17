@@ -21,6 +21,7 @@ class BreedFixtures extends Fixture
             $breed->setDescription("Descrição da Raça {$i}");
             $breed->setId(Uuid::v4());
 
+            $this->setReference("breed-{$i}", $breed);
             $manager->persist($breed);
         }
 
