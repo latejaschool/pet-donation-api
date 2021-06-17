@@ -26,7 +26,7 @@ class Address
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    private int $number;
+    private ?int $number;
 
     /**
      * @ORM\Column(type="string", length=50)
@@ -36,12 +36,12 @@ class Address
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private string $complement;
+    private ?string $complement;
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
      */
-    private string $city;
+    private ?string $city;
 
     /**
      * @ORM\Column(type="string", length=2)
@@ -72,12 +72,12 @@ class Address
         $this->street = $street;
     }
 
-    public function getNumber(): int
+    public function getNumber(): ?int
     {
         return $this->number;
     }
 
-    public function setNumber(int $number): void
+    public function setNumber(?int $number): void
     {
         $this->number = $number;
     }
@@ -92,22 +92,22 @@ class Address
         $this->district = $district;
     }
 
-    public function getComplement(): string
+    public function getComplement(): ?string
     {
         return $this->complement;
     }
 
-    public function setComplement(string $complement): void
+    public function setComplement(?string $complement): void
     {
         $this->complement = $complement;
     }
 
-    public function getCity(): string
+    public function getCity(): ?string
     {
         return $this->city;
     }
 
-    public function setCity(string $city): void
+    public function setCity(?string $city): void
     {
         $this->city = $city;
     }

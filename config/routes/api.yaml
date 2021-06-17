@@ -5,3 +5,7 @@ api_breed:
 api_user:
   resource: api/user.yaml
   name_prefix: api_user_
+
+api_ngo:
+  resource: api/ngo.yaml
+  name_prefix: api_ngo_

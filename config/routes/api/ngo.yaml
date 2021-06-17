@@ -1,0 +1,9 @@
+get:
+  path: '/ngos'
+  controller: App\Controller\Api\NGO\ListNGOController
+  methods: ['GET']
+
+get_one:
+  path: '/ngos/{id}'
+  controller: App\Controller\Api\NGO\ListNGOController
+  methods: ['GET']
