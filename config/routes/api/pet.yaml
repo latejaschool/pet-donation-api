@@ -1,0 +1,9 @@
+get:
+  path: '/pets'
+  controller: App\Controller\Api\Pet\ListPetController
+  methods: ['GET']
+
+get_one:
+  path: '/pets/{id}'
+  controller: App\Controller\Api\Pet\ListPetController
+  methods: ['GET']
