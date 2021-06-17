@@ -1,0 +1,9 @@
+get:
+  path: '/users'
+  controller: App\Controller\Api\User\ListUserController
+  methods: ['GET']
+
+get_one:
+  path: '/users/{id}'
+  controller: App\Controller\Api\User\ListUserController
+  methods: ['GET']
