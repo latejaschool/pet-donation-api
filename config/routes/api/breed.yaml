@@ -1,0 +1,9 @@
+get:
+  path: '/breeds'
+  controller: App\Controller\Api\Breed\ListBreedController
+  methods: ['GET']
+
+get_one:
+  path: '/breeds/{id}'
+  controller: App\Controller\Api\Breed\ListBreedController
+  methods: ['GET']

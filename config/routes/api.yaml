@@ -1,0 +1,3 @@
+api_breed:
+  resource: api/breed.yaml
+  name_prefix: api_breed_
