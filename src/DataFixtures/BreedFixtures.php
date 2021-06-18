@@ -20,6 +20,8 @@ class BreedFixtures extends Fixture
             $breed->setName("Raça Teste {$i}");
             $breed->setDescription("Descrição da Raça {$i}");
             $breed->setId(Uuid::v4());
+            $breed->setCreatedAt(new \DateTime());
+            $breed->setUpdatedAt(new \DateTime());
 
             $this->setReference("breed-{$i}", $breed);
             $manager->persist($breed);
