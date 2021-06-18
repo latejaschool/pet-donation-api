@@ -17,3 +17,9 @@ post:
   path: '/breeds'
   controller: App\Controller\Api\Breed\CreateBreedController
   methods: ['POST']
+
+get_pets:
+  path: '/breeds/{id}/pets'
+  controller: App\Controller\Api\Breed\ListPetByBreedControlller
+  methods: ['GET']
+
