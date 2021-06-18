@@ -2,6 +2,10 @@ api_breed:
   resource: api/breed.yaml
   name_prefix: api_breed_
 
+api_pet-type:
+  resource: api/pet-type.yaml
+  name_prefix: api_pet-type_
+
 api_user:
   resource: api/user.yaml
   name_prefix: api_user_
