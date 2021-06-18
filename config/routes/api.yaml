@@ -13,3 +13,7 @@ api_user:
 api_ngo:
   resource: api/ngo.yaml
   name_prefix: api_ngo_
+
+api_pet:
+  resource: api/pet.yaml
+  name_prefix: api_pet_
