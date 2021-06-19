@@ -72,7 +72,7 @@ class Pet
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private \DateTime $deletedAt;
+    private ?\DateTime $deletedAt;
 
     public function getId(): Uuid
     {
@@ -184,7 +184,7 @@ class Pet
         $this->updatedAt = $updatedAt;
     }
 
-    public function getDeletedAt(): \DateTime
+    public function getDeletedAt(): ?\DateTime
     {
         return $this->deletedAt;
     }
