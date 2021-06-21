@@ -7,3 +7,8 @@ get_one:
   path: '/users/{id}'
   controller: App\Controller\Api\User\ListUserController
   methods: ['GET']
+
+delete:
+  path: '/users/{id}'
+  controller: App\Controller\Api\User\DeleteUserController
+  methods: ['DELETE']
