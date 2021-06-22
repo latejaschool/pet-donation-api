@@ -12,3 +12,8 @@ delete:
   path: '/breeds/{id}'
   controller: App\Controller\Api\Breed\DeleteBreedController
   methods: ['DELETE']
+
+post:
+  path: '/breeds'
+  controller: App\Controller\Api\Breed\CreateBreedController
+  methods: ['POST']
