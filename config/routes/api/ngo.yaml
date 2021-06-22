@@ -7,3 +7,8 @@ get_one:
   path: '/ngos/{id}'
   controller: App\Controller\Api\NGO\ListNGOController
   methods: ['GET']
+
+delete:
+  path: '/ngos/{id}'
+  controller: App\Controller\Api\NGO\DeleteNGOController
+  methods: ['DELETE']
