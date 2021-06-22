@@ -7,3 +7,8 @@ get_one:
   path: '/pets/{id}'
   controller: App\Controller\Api\Pet\ListPetController
   methods: ['GET']
+
+delete:
+  path: '/pets/{id}'
+  controller: App\Controller\Api\Pet\DeletePetController
+  methods: ['DELETE']
