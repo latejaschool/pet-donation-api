@@ -6,6 +6,8 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Uid\Uuid;
+use Symfony\Component\Uid\UuidV4;
+
 
 /**
  * @ORM\Entity()
@@ -22,6 +24,13 @@ class PetType
      * @ORM\Column(type="string", length=50)
      */
     private string $name;
+
+    public function __construct()
+    {
+        $this->id = new UuidV4();
+        $this->createdAt = new \DateTime();
+        $this->updatedAt = new \DateTime();
+    }
 
     public function getId(): Uuid
     {
