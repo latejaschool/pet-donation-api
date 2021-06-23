@@ -12,3 +12,8 @@ delete:
   path: '/pets/{id}'
   controller: App\Controller\Api\Pet\DeletePetController
   methods: ['DELETE']
+
+patch:
+  path: '/pets/{id}'
+  controller: App\Controller\Api\Pet\EditPetController
+  methods: ['PATCH']
