@@ -12,3 +12,8 @@ delete:
   path: '/ngos/{id}'
   controller: App\Controller\Api\NGO\DeleteNGOController
   methods: ['DELETE']
+
+post:
+  path: '/ngos'
+  controller: App\Controller\Api\NGO\CreateNGOController
+  methods: ['POST']
