@@ -6,6 +6,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Uid\Uuid;
+use Symfony\Component\Uid\UuidV4;
 
 /**
  * @ORM\Entity()
@@ -52,6 +53,11 @@ class Address
      * @ORM\Column(type="string", length=10)
      */
     private string $zipcode;
+
+    public function __construct()
+    {
+        $this->id = new UuidV4();
+    }
 
     public function getId(): Uuid
     {
@@ -131,6 +137,4 @@ class Address
     {
         $this->zipcode = $zipcode;
     }
-
 }
-

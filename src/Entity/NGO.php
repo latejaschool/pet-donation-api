@@ -6,6 +6,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Uid\Uuid;
+use Symfony\Component\Uid\UuidV4;
 
 /**
  * @ORM\Entity()
@@ -26,10 +27,10 @@ class NGO
     /**
      * @ORM\Column(length=100, nullable=true)
      */
-    private string $socialName;
+    private ?string $socialName;
 
     /**
-     * @ORM\OneToOne(targetEntity="Address")
+     * @ORM\OneToOne(targetEntity="Address", cascade={"all"})
      * @ORM\JoinColumn(name="address_id", referencedColumnName="id")
      */
     private Address $address;
@@ -37,12 +38,12 @@ class NGO
     /**
      * @ORM\Column(length=20, nullable=true)
      */
-    private string $fiscalCode;
+    private ?string $fiscalCode;
 
     /**
      * @ORM\Column(nullable=true)
      */
-    private string $site;
+    private ?string $site;
 
     /**
      * @ORM\Column(length="11")
@@ -62,8 +63,14 @@ class NGO
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private \Datetime $deletedAt;
+    private ?\Datetime $deletedAt;
 
+    public function __construct()
+    {
+        $this->id = new UuidV4();
+        $this->createdAt = new \DateTime();
+        $this->updatedAt = new \DateTime();
+    }
 
     public function getId(): Uuid
     {
@@ -85,12 +92,12 @@ class NGO
         $this->name = $name;
     }
 
-    public function getSocialName(): string
+    public function getSocialName(): ?string
     {
         return $this->socialName;
     }
 
-    public function setSocialName(string $socialName): void
+    public function setSocialName(?string $socialName): void
     {
         $this->socialName = $socialName;
 
@@ -106,22 +113,22 @@ class NGO
         $this->address = $address;
     }
 
-    public function getFiscalCode(): string
+    public function getFiscalCode(): ?string
     {
         return $this->fiscalCode;
     }
 
-    public function setFiscalCode(string $fiscalCode): void
+    public function setFiscalCode(?string $fiscalCode): void
     {
         $this->fiscalCode = $fiscalCode;
     }
 
-    public function getSite(): string
+    public function getSite(): ?string
     {
         return $this->site;
     }
 
-    public function setSite(string $site): void
+    public function setSite(?string $site): void
     {
         $this->site = $site;
     }
@@ -156,7 +163,7 @@ class NGO
         $this->updatedAt = $updatedAt;
     }
 
-    public function getDeletedAt(): \DateTime
+    public function getDeletedAt(): ?\DateTime
     {
         return $this->deletedAt;
     }
