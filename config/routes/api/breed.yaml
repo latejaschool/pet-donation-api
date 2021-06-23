@@ -18,6 +18,11 @@ post:
   controller: App\Controller\Api\Breed\CreateBreedController
   methods: ['POST']
 
+patch:
+  path: '/breeds/{id}'
+  controller: App\Controller\Api\Breed\EditBreedController
+  methods: ['PATCH']
+
 get_pets:
   path: '/breeds/{id}/pets'
   controller: App\Controller\Api\Breed\ListPetByBreedControlller
