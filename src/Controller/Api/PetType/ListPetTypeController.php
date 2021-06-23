@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Controller\Api\PetType;
 
-
 use App\Entity\PetType;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ObjectRepository;

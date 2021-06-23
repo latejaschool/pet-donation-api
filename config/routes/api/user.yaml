@@ -12,3 +12,8 @@ delete:
   path: '/users/{id}'
   controller: App\Controller\Api\User\DeleteUserController
   methods: ['DELETE']
+
+POST:
+  path: '/users'
+  controller: App\Controller\Api\User\CreateUserController
+  methods: ['POST']
