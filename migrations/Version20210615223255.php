@@ -42,9 +42,9 @@ final class Version20210615223255 extends AbstractMigration
         $tableNgo->addColumn('phone', Types::STRING, [
             'length' => 11
         ]);
-        $tableNgo->addColumn('created_at', Types::DATE_IMMUTABLE);
-        $tableNgo->addColumn('updated_at', Types::DATE_MUTABLE);
-        $tableNgo->addColumn('deleted_at', Types::DATE_MUTABLE, [
+        $tableNgo->addColumn('created_at', Types::DATETIME_IMMUTABLE);
+        $tableNgo->addColumn('updated_at', Types::DATETIME_MUTABLE);
+        $tableNgo->addColumn('deleted_at', Types::DATETIME_MUTABLE, [
             'notnull' => false
         ]);
         $tableNgo->setPrimaryKey(['id']);

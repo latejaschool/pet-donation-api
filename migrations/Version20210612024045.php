@@ -38,7 +38,7 @@ final class Version20210612024045 extends AbstractMigration
         $tablePet->addColumn('available', Types::BOOLEAN);
         $tablePet->addColumn('diseases', Types::STRING);
         $tablePet->addColumn('vaccines', Types::STRING);
-        $tablePet->addColumn('created_at', Types::DATE_IMMUTABLE);
+        $tablePet->addColumn('created_at', Types::DATETIME_IMMUTABLE);
         $tablePet->addColumn('updated_at', Types::DATETIME_MUTABLE, [
             'notnull' => false
         ]);

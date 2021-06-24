@@ -21,9 +21,9 @@ final class Version20210617212600 extends AbstractMigration
     {
         $tableBreed = $schema->getTable(self::TABLE_BREED);
 
-        $tableBreed->addColumn('created_at', Types::DATE_IMMUTABLE);
-        $tableBreed->addColumn('updated_at', Types::DATE_MUTABLE);
-        $tableBreed->addColumn('deleted_at', Types::DATE_MUTABLE, [
+        $tableBreed->addColumn('created_at', Types::DATETIME_IMMUTABLE);
+        $tableBreed->addColumn('updated_at', Types::DATETIME_MUTABLE);
+        $tableBreed->addColumn('deleted_at', Types::DATETIME_MUTABLE, [
             'notnull' => false
         ]);
     }
