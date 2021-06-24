@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Controller\Api\PetType;
 
 use App\Entity\PetType;
-use Doctrine\ORM\EntityManagerInterface;
+use App\Service\PetTypeService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,12 +14,12 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 class CreatePetTypeController extends AbstractController
 {
-    private EntityManagerInterface $entityManager;
+    private PetTypeService $service;
     private SerializerInterface $serializer;
 
-    public function __construct(EntityManagerInterface $entityManager, SerializerInterface $serializer)
+    public function __construct(PetTypeService $service, SerializerInterface $serializer)
     {
-        $this->entityManager = $entityManager;
+        $this->service = $service;
         $this->serializer = $serializer;           
     }
 
@@ -31,9 +31,10 @@ class CreatePetTypeController extends AbstractController
             'json'
         );
 
-        $this->entityManager->persist($petType);
-        $this->entityManager->flush();
+        $this->service->insert($petType);
 
         return $this->json($petType, Response::HTTP_CREATED);
     }
+
 }
+
