@@ -12,3 +12,8 @@ post:
   path: '/pet-types'
   controller: App\Controller\Api\PetType\CreatePetTypeController
   methods: ['POST']
+
+patch:
+  path: '/pet-types/{id}'
+  controller: App\Controller\Api\PetType\EditPetTypeController
+  methods: ['PATCH']
