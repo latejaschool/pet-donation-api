@@ -21,26 +21,29 @@ class NGOService
 
     public function insert(NGO $ngo): NGO
     {
+        $this->entityManager->persist($ngo);
+        $this->entityManager->flush();
+
         return $ngo;
     }
 
     public function find(string $id): NGO
     {
-        
+
     }
-    
+
     public function findAll(): iterable
     {
-        
+
     }
 
     public function update(string $id, NGO $ngo): void
     {
-        
+
     }
 
     public function remove(string $id): void
     {
-        
+
     }
 }
