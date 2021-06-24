@@ -41,9 +41,9 @@ final class Version20210613221324 extends AbstractMigration
         $tableUser->addColumn('status', Types::BOOLEAN);
         $tableUser->addColumn('photo', Types::STRING);
         $tableUser->addColumn('roles', Types::JSON);
-        $tableUser->addColumn('created_at', Types::DATE_IMMUTABLE);
-        $tableUser->addColumn('updated_at', Types::DATE_MUTABLE);
-        $tableUser->addColumn('deleted_at', Types::DATE_MUTABLE, [
+        $tableUser->addColumn('created_at', Types::DATETIME_IMMUTABLE);
+        $tableUser->addColumn('updated_at', Types::DATETIME_MUTABLE);
+        $tableUser->addColumn('deleted_at', Types::DATETIME_MUTABLE, [
             'notnull' => false,
         ]);
 
