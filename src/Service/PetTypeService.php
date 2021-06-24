@@ -22,6 +22,9 @@ class PetTypeService
 
     public function insert(PetType $petType): PetType
     {
+        $this->entityManager->persist($petType);
+        $this->entityManager->flush();
+
         return $petType;
     }
 
