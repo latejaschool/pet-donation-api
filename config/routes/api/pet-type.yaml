@@ -8,6 +8,11 @@ get_one:
   controller: App\Controller\Api\PetType\ListPetTypeController
   methods: ['GET']
 
+delete:
+  path: '/pet-types/{id}'
+  controller: App\Controller\Api\PetType\DeletePetTypeController
+  methods: ['DELETE']
+
 post:
   path: '/pet-types'
   controller: App\Controller\Api\PetType\CreatePetTypeController

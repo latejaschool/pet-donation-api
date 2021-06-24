@@ -9,8 +9,9 @@ use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ObjectRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 
-class ListPetTypeController extends AbstractController
+class DeletePetTypeController extends AbstractController
 {
     private EntityManagerInterface $entityManager;
     private ObjectRepository $repository;
@@ -23,16 +24,16 @@ class ListPetTypeController extends AbstractController
 
     public function __invoke(?string $id = null): JsonResponse
     {
-        if (null !== $id) {
-            $petType = $this->repository->find($id);
+        $petType = $this->repository->find($id);
 
-            return $this->json($petType);
+        if (!$petType) {
+            throw new \Exception("Pet Type not found");
         }
 
-        $response = $this->repository->findBy([
-            "deletedAt" => null
-        ]);
+        $petType->setDeletedAt(new \DateTime());
 
-        return $this->json($response);
+        $this->entityManager->flush();
+
+        return $this->json(null, Response::HTTP_NO_CONTENT);
     }
 }
