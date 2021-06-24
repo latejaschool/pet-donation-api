@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Controller\Api\Breed;
 
 use App\Service\BreedService;
-use Doctrine\Persistence\ObjectRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
