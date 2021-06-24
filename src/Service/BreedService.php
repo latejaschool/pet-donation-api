@@ -21,6 +21,9 @@ class BreedService
 
     public function insert(Breed $breed): Breed
     {
+        $this->entityManager->persist($breed);
+        $this->entityManager->flush();
+
         return $breed;
     }
 
