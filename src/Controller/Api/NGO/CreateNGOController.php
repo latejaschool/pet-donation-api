@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Controller\Api\NGO;
 
 use App\Entity\NGO;
-use Doctrine\ORM\EntityManagerInterface;
+use App\Service\NGOService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,12 +14,12 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 class CreateNGOController extends AbstractController
 {
-    private EntityManagerInterface $entityManager;
+    private NGOService $service;
     private SerializerInterface $serializer;
 
-    public function __construct(EntityManagerInterface $entityManager, SerializerInterface $serializer)
+    public function __construct(NGOService $service, SerializerInterface $serializer)
     {
-        $this->entityManager = $entityManager;
+        $this->service = $service;
         $this->serializer = $serializer;
     }
 
@@ -31,8 +31,7 @@ class CreateNGOController extends AbstractController
             'json'
         );
 
-        $this->entityManager->persist($ngo);
-        $this->entityManager->flush();
+        $this->service->insert($ngo);
 
         return $this->json($ngo, Response::HTTP_CREATED);
     }

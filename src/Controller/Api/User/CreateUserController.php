@@ -30,9 +30,7 @@ class CreateUserController extends AbstractController
             User::class,
             'json'
         );
-        $hash = password_hash($user->getPassword(), PASSWORD_ARGON2I);
-        $user->setPassword($hash);
-
+        
         $this->service->insert($user);
 
         return $this->json($user, Response::HTTP_CREATED);

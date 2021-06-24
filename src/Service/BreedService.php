@@ -29,21 +29,30 @@ class BreedService
 
     public function find(string $id): Breed
     {
-        
+
     }
-    
+
     public function findAll(): iterable
     {
-        
+
     }
 
     public function update(string $id, Breed $breed): void
     {
-        
+
     }
 
     public function remove(string $id): void
     {
-        
+        $breed = $this->repository->find($id);
+
+        if (!$breed) {
+            throw new \Exception("Breed not found");
+        }
+
+        $breed->setDeletedAt(new \DateTime());
+
+        $this->entityManager->persist($breed);
+        $this->entityManager->flush();
     }
 }
