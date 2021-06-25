@@ -29,13 +29,13 @@ class BreedService
 
     public function find(string $id): Breed
     {
-            $breed = $this->repository->find($id);
-            
-            if (!$breed) {
-                throw new \Exception("Breed not found");
-            }
+        $breed = $this->repository->find($id);
 
-            return $breed;
+        if (!$breed) {
+            throw new \Exception("Breed not found");
+        }
+
+        return $breed;
     }
     
     public function findAll(): iterable

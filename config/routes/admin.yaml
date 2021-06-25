@@ -1,0 +1,3 @@
+admin_breed:
+  resource: admin/breed.yaml
+  name_prefix: admin_breed_
