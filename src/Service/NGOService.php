@@ -29,12 +29,18 @@ class NGOService
 
     public function find(string $id): NGO
     {
+        $ngo = $this->repository->find($id);
 
+        return $ngo;
     }
 
     public function findAll(): iterable
     {
+        $response = $this->repository->findBy([
+            "deletedAt" => null
+        ]);
 
+        return $response;
     }
 
     public function update(string $id, NGO $ngo): void
