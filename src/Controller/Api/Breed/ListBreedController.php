@@ -4,35 +4,27 @@ declare(strict_types=1);
 
 namespace App\Controller\Api\Breed;
 
-use App\Entity\Breed;
-use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\Persistence\ObjectRepository;
+use App\Service\BreedService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 class ListBreedController extends AbstractController
 {
-    private EntityManagerInterface $entityManager;
-    private ObjectRepository $repository;
+    private BreedService $service;
 
-    public function __construct(EntityManagerInterface $entityManager)
+    public function __construct(BreedService $service)
     {
-        $this->entityManager = $entityManager;
-        $this->repository = $entityManager->getRepository(Breed::class);
+        $this->service = $service;
     }
 
     public function __invoke(?string $id = null): JsonResponse
     {
         if (null !== $id) {
-            $breed = $this->repository->find($id);
-
+            $breed = $this->service->find($id);
             return $this->json($breed);
         }
 
-        $response = $this->repository->findBy([
-            "deletedAt" => null
-        ]);
-
+        $response = $this->service->findAll($id);
         return $this->json($response);
     }
 }

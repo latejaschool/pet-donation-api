@@ -29,12 +29,20 @@ class BreedService
 
     public function find(string $id): Breed
     {
+            $breed = $this->repository->find($id);
+            
+            if (!$breed) {
+                throw new \Exception("Breed not found");
+            }
 
+            return $breed;
     }
-
+    
     public function findAll(): iterable
     {
-
+        return $this->repository->findBy([
+            "deletedAt" => null
+        ]);
     }
 
     public function update(string $id, Breed $breed): void
