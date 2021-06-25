@@ -1,0 +1,3 @@
+index:
+  path: /admin/breeds
+  controller: App\Controller\Admin\AdminBreedController::indexAction
