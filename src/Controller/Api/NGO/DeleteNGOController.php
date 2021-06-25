@@ -4,35 +4,23 @@ declare(strict_types=1);
 
 namespace App\Controller\Api\NGO;
 
-use App\Entity\NGO;
-use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\Persistence\ObjectRepository;
+use App\Service\NGOService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
 class DeleteNGOController extends AbstractController
 {
-    private EntityManagerInterface $entityManager;
-    private ObjectRepository $repository;
+    private NGOService $service;
 
-    public function __construct(EntityManagerInterface $entityManager)
+    public function __construct(NGOService $service)
     {
-        $this->entityManager = $entityManager;
-        $this->repository = $entityManager->getRepository(NGO::class);
+        $this->service = $service;
     }
 
     public function __invoke(?string $id = null): JsonResponse
     {
-        $ngo = $this->repository->find($id);
-
-        if (!$ngo) {
-            throw new \Exception("NGO not found");
-        }
-
-        $ngo->setDeletedAt(new \DateTime());
-
-        $this->entityManager->flush();
+        $this->service->remove($id);
 
         return $this->json(null, Response::HTTP_NO_CONTENT);
     }

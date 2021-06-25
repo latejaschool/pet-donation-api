@@ -44,6 +44,14 @@ class NGOService
 
     public function remove(string $id): void
     {
+        $ngo = $this->repository->find($id);
 
+        if (!$ngo) {
+            throw new \Exception("NGO not found");
+        }
+
+        $ngo->setDeletedAt(new \DateTime());
+
+        $this->entityManager->flush();
     }
 }
