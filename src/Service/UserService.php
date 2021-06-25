@@ -44,6 +44,16 @@ class UserService
 
     public function remove(string $id): void
     {
-        
+        $user = $this->repository->find($id);
+
+        if (!$user) {
+            throw new \Exception("User not found");
+        }
+
+        $user->setDeletedAt(new \DateTime());
+
+        $this->entityManager->persist($user);
+        $this->entityManager->flush();
     }
+
 }
