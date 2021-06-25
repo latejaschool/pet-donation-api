@@ -45,7 +45,17 @@ class PetTypeService
 
     public function remove(string $id): void
     {
+        $petType = $this->repository->find($id);
+
+        if (!$petType) {
+            throw new \Exception("PetType not found");
+        }
+
+        $petType->setDeletedAt(new \DateTime());
+
+        $this->entityManager->flush();
 
     }
 
 }
+
