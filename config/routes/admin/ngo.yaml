@@ -1,0 +1,3 @@
+index:
+  path: /admin/ngos
+  controller: App\Controller\Admin\AdminNGOController::indexAction
