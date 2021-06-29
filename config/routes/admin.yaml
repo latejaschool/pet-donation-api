@@ -1,3 +1,7 @@
 admin_breed:
   resource: admin/breed.yaml
   name_prefix: admin_breed_
+
+admin_pettype:
+  resource: admin/pettype.yaml
+  name_prefix: admin_pettype_

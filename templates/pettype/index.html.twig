@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h1>Listar Tipos de Pets</h1>
+
+<div class="card card-body">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Descrição</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pettype in pettypes %}
+                <tr>
+                    <td>{{ pettype.name }}</td>
+                    <td>
+                        <button class="btn btn-outline-warning btn-sm">Editar</button>
+                        <button class="btn btn-outline-danger btn-sm">Excluir</button>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
