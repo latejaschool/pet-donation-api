@@ -21,6 +21,9 @@ class UserService
 
     public function insert(User $user): User
     {
+        $hash = password_hash($user->getPassword(), PASSWORD_ARGON2I);
+        $user->setPassword($hash);
+
         $this->entityManager->persist($user);
         $this->entityManager->flush();
 

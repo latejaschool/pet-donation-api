@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Controller\Api\User;
 
 use App\Entity\User;
-use Doctrine\ORM\EntityManagerInterface;
+use App\Service\UserService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,12 +14,12 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 class CreateUserController extends AbstractController
 {
-    private EntityManagerInterface $entityManager;
+    private UserService $service;
     private SerializerInterface $serializer;
 
-    public function __construct(EntityManagerInterface $entityManager, SerializerInterface $serializer)
+    public function __construct(UserService $service, SerializerInterface $serializer)
     {
-        $this->entityManager = $entityManager;
+        $this->service = $service;
         $this->serializer = $serializer;
     }
 
@@ -30,11 +30,8 @@ class CreateUserController extends AbstractController
             User::class,
             'json'
         );
-        $hash = password_hash($user->getPassword(), PASSWORD_ARGON2I);
-        $user->setPassword($hash);
-
-        $this->entityManager->persist($user);
-        $this->entityManager->flush();
+        
+        $this->service->insert($user);
 
         return $this->json($user, Response::HTTP_CREATED);
     }
