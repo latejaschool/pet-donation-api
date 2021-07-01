@@ -4,33 +4,27 @@ declare(strict_types=1);
 
 namespace App\Controller\Api\User;
 
-use App\Entity\User;
-use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\Persistence\ObjectRepository;
+use App\Service\UserService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 class ListUserController extends AbstractController
 {
-    private EntityManagerInterface $entityManager;
-    private ObjectRepository $repository;
+    private UserService $service;
 
-    public function __construct(EntityManagerInterface $entityManager)
+    public function __construct(UserService $service)
     {
-        $this->entityManager = $entityManager;
-        $this->repository = $entityManager->getRepository(User::class);
+        $this->service = $service;
     }
 
     public function __invoke(?string $id = null): JsonResponse
     {
         if (null !== $id) {
-            $user = $this->repository->find($id);
-
+            $user = $this->service->find($id);
             return $this->json($user);
         }
 
-        $response = $this->repository->findAll();
-
+        $response = $this->service->findAll();
         return $this->json($response);
     }
 }

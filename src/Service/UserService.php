@@ -32,12 +32,20 @@ class UserService
 
     public function find(string $id): User
     {
-        
+        $user = $this->repository->find($id);
+
+        if (!$user) {
+            throw new \Exception("User not found");
+        }
+
+        return $user;
     }
     
     public function findAll(): iterable
     {
-        
+        return $this->repository->findBy([
+            "deletedAt" => null
+        ]);
     }
 
     public function update(string $id, User $user): void
