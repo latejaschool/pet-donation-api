@@ -26,12 +26,20 @@ class PetService
 
     public function find(string $id): Pet
     {
-        
+        $pet = $this->repository->find($id);
+
+        if (!$pet) {
+            throw new \Exception("Pet not found");
+        }
+
+        return $pet;
     }
-    
+
     public function findAll(): iterable
     {
-        
+        return $this->repository->findBy([
+            "deletedAt" => null
+        ]);
     }
 
     public function update(string $id, Pet $pet): void

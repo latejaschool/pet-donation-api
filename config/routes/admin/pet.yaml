@@ -1,0 +1,3 @@
+index:
+  path: /admin/pet
+  controller: App\Controller\Admin\AdminPetController::indexAction

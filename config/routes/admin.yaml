@@ -6,6 +6,10 @@ admin_pettype:
   resource: admin/pettype.yaml
   name_prefix: admin_pettype_
 
+admin_pet:
+  resource: admin/pet.yaml
+  name_prefix: admin_pet_
+
 admin_ngo:
   resource: admin/ngo.yaml
   name_prefix: admin_ngo_
