@@ -13,7 +13,12 @@ delete:
   controller: App\Controller\Api\User\DeleteUserController
   methods: ['DELETE']
 
-POST:
+post:
   path: '/users'
   controller: App\Controller\Api\User\CreateUserController
   methods: ['POST']
+
+patch:
+  path: '/users/{id}'
+  controller: App\Controller\Api\User\EditUserController
+  methods: ['PATCH']
