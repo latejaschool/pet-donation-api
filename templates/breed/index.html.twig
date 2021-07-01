@@ -19,8 +19,8 @@
                     <td>{{ breed.name }}</td>
                     <td>{{ breed.description }}</td>
                     <td>
-                        <button class="btn btn-outline-warning btn-sm">Editar</button>
-                        <button class="btn btn-outline-danger btn-sm">Excluir</button>
+                        <button class="btn btn-outline-warning">Editar</button>
+                        <button onclick="confirmRemove('{{ breed.id }}')" class="btn btn-outline-danger">Excluir</button>
                     </td>
                 </tr>
             {% endfor %}
@@ -28,4 +28,16 @@
     </table>
 </div>
 
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        function confirmRemove(id) {
+            let path = '{{ path("admin_breed_remove", {id: "breed_id"}) }}';
+
+            if (confirm("Voce tem certeza?")) {
+                location.href = path.replace("breed_id", id);
+            }
+        }
+    </script>
 {% endblock %}

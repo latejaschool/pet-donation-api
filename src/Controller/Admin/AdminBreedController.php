@@ -23,4 +23,11 @@ class AdminBreedController extends AbstractController
             'breeds' => $this->service->findAll(),
         ]);
     }
+
+    public function removeAction(string $id): Response
+    {
+        $this->service->remove($id);
+
+        return $this->redirectToRoute('admin_breed_index');
+    }
 }
