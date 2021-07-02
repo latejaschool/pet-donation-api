@@ -1,22 +1,24 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin.html.twig' %}
 
-{% block body %}
+{% block page_title %}
+    Nova Raça
+{% endblock %}
 
-<h1>Nova Raça</h1>
+{% block content %}
 
-<div class="card card-body">
-    <form action="#" method="post">
-        <label for="name">Nome</label>
-        <input type="text" id="name" name="name" class="form-control">
-        <br>
+    <div class="card card-body">
+        <form action="#" method="post">
+            <label for="name">Nome</label>
+            <input type="text" id="name" name="name" class="form-control">
+            <br>
 
-        <label for="description">Descrição</label>
-        <textarea id="description" name="description" class="form-control"></textarea>
-        <br>
+            <label for="description">Descrição</label>
+            <textarea id="description" name="description" class="form-control"></textarea>
+            <br>
 
-        <button class="btn btn-primary">Enviar</button>
-    </form>
-</div>
+            <button class="btn btn-primary">Enviar</button>
+        </form>
+    </div>
 
 {% endblock %}
 
