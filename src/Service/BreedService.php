@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Service;
 
 use App\Entity\Breed;
+use App\Exception\BreedNotFoundException;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ObjectRepository;
 
@@ -55,7 +56,7 @@ class BreedService
         $breed = $this->repository->find($id);
 
         if (!$breed) {
-            throw new \Exception("Breed not found");
+            throw new BreedNotFoundException();
         }
 
         $breed->setDeletedAt(new \DateTime());
