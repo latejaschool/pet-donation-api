@@ -7,5 +7,5 @@ add:
   controller: App\Controller\Admin\AdminBreedController::addAction
 
 remove:
-  path: /admin/breeds/{id}
+  path: /admin/breeds/{id}/remove
   controller: App\Controller\Admin\AdminBreedController::removeAction
