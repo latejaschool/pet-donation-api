@@ -17,3 +17,8 @@ post:
   path: '/ngos'
   controller: App\Controller\Api\NGO\CreateNGOController
   methods: ['POST']
+
+patch:
+  path: '/ngos/{id}'
+  controller: App\Controller\Api\NGO\EditNGOController
+  methods: ['PATCH']

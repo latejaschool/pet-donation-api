@@ -4,9 +4,12 @@ declare(strict_types=1);
 
 namespace App\Service;
 
+use App\Entity\Address;
 use App\Entity\NGO;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ObjectRepository;
+use stdClass;
+use Symfony\Component\HttpFoundation\Request;
 
 class NGOService
 {
@@ -43,9 +46,31 @@ class NGOService
         return $response;
     }
 
-    public function update(string $id, NGO $ngo): void
+    public function update(NGO $ngo, stdClass $request): void
     {
+        $ngo->setName($request->name ?? $ngo->getName());
+        $ngo->setSocialName($request->socialName ?? $ngo->getName());
 
+        $addressCurrent = $ngo->getAddress();
+        if (isset($request->address)) {
+            $address = new Address();
+            $address->setStreet($request->address->street ?? $addressCurrent->getStreet());
+            $address->setNumber($request->address->number ?? $addressCurrent->getNumber());
+            $address->setDistrict($request->address->district ?? $addressCurrent->getDistrict());
+            $address->setComplement($request->address->complement ?? $addressCurrent->getComplement());
+            $address->setCity($request->address->city ?? $addressCurrent->getCity());
+            $address->setState($request->address->state ?? $addressCurrent->getState());
+            $address->setZipcode($request->address->zipcode ?? $addressCurrent->getZipcode());
+        }
+        $ngo->setAddress($address ?? $addressCurrent);
+
+        $ngo->setFiscalCode($request->fiscalCode ?? $ngo->getFiscalCode());
+        $ngo->setSite($request->site ?? $ngo->getSite());
+        $ngo->setPhone($request->phone ?? $ngo->getPhone());
+
+        $ngo->setUpdatedAt(new \DateTime());
+
+        $this->entityManager->flush();
     }
 
     public function remove(string $id): void
