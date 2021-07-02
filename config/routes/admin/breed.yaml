@@ -2,6 +2,10 @@ index:
   path: /admin/breeds
   controller: App\Controller\Admin\AdminBreedController::indexAction
 
+add:
+  path: /admin/breeds/new
+  controller: App\Controller\Admin\AdminBreedController::addAction
+
 remove:
   path: /admin/breeds/{id}
   controller: App\Controller\Admin\AdminBreedController::removeAction
