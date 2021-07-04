@@ -1,8 +1,8 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin.html.twig' %}
 
-{% block body %}
+{% block content %}
 
-<h1>Listar Raças</h1>
+<h1>Listar pets</h1>
 
 <div class="card card-body">
     <table class="table table-striped table-hover">
@@ -34,7 +34,7 @@
                     </td>
                     <td>
                         <button class="btn btn-outline-warning btn-sm">Editar</button>
-                        <button class="btn btn-outline-danger btn-sm">Excluir</button>
+                        <button onclick="confirmRemove('{{ pet.id }}')" class="btn btn-outline-danger">Excluir</button>
                     </td>
                 </tr>
             {% endfor %}
@@ -42,4 +42,15 @@
     </table>
 </div>
 
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        function confirmRemove(id) {
+            let path = '{{ path("admin_pet_remove", {id: "pet_id"}) }}';
+            if (confirm("Voce tem certeza?")) {
+                location.href = path.replace("pet_id", id);
+            }
+        }
+    </script>
 {% endblock %}

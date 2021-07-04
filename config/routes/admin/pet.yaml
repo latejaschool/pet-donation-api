@@ -1,3 +1,7 @@
 index:
   path: /admin/pet
   controller: App\Controller\Admin\AdminPetController::indexAction
+
+remove:
+  path: /admin/pet/{id}/remove
+  controller: App\Controller\Admin\AdminPetController::removeAction
