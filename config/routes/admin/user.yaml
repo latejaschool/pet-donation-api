@@ -1,0 +1,11 @@
+index:
+  path: /admin/user
+  controller: App\Controller\Admin\AdminUserController::indexAction
+
+add:
+  path: /admin/user/new
+  controller: App\Controller\Admin\AdminUserController::addAction
+
+remove:
+  path: /admin/user/{id}/remove
+  controller: App\Controller\Admin\AdminUserController::removeAction

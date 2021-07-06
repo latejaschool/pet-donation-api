@@ -1,0 +1,51 @@
+{% extends 'admin.html.twig' %}
+
+{% block content %}
+
+<h1>Listar Usuários</h1>
+
+<div class="card card-body">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>E-mail</th>
+                <th>Telefone</th>
+                <th>Foto</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.phone }}</td>
+                    <td>
+                        <a href="{{ user.photo }}">
+                            <img width="100px" src="{{ user.photo }}"/>
+                        </a>
+                    </td>
+                    <td>
+                        <button class="btn btn-outline-warning btn-sm">Editar</button>
+                        <button onclick="confirmRemove('{{ user.id }}')" class="btn btn-outline-danger btn-sm">Excluir</button>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        function confirmRemove(id) {
+            let path = '{{ path("admin_user_remove", {id: "user_id"}) }}';
+
+            if (confirm("Voce tem certeza?")) {
+                location.href = path.replace("user_id", id);
+            }
+        }
+    </script>
+{% endblock %}
