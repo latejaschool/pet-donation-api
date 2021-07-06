@@ -6,6 +6,10 @@ add:
   path: /admin/breeds/new
   controller: App\Controller\Admin\AdminBreedController::addAction
 
+edit:
+  path: /admin/breeds/{id}/edit
+  controller: App\Controller\Admin\AdminBreedController::editAction
+
 remove:
   path: /admin/breeds/{id}/remove
   controller: App\Controller\Admin\AdminBreedController::removeAction

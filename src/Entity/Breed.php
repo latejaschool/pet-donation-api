@@ -11,7 +11,7 @@ use Symfony\Component\Uid\UuidV4;
 /**
  * @ORM\Entity()
  */
-class Breed
+class Breed extends \Symfony\Component\HttpFoundation\Request
 {
     /**
      * @ORM\Id()

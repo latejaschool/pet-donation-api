@@ -62,6 +62,11 @@ class AdminBreedController extends AbstractController
         return $this->redirectToRoute('admin_breed_index');
     }
 
+    public function editAction(Request $request): Response
+    {
+        //
+    }
+
     public function removeAction(string $id): Response
     {
         try {
