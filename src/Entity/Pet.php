@@ -6,6 +6,7 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Uid\Uuid;
+use Symfony\Component\Uid\UuidV4;
 
 /**
  * @ORM\Entity()
@@ -72,7 +73,15 @@ class Pet
     /**
      * @ORM\Column(type="datetime", nullable=true)
      */
-    private ?\DateTime $deletedAt;
+    private \DateTime $deletedAt;
+
+    public function __construct()
+    {
+        $this->id = new UuidV4();
+        $this->createdAt = new \DateTime();
+        $this->updatedAt = new \DateTime();
+        $this->available = true;
+    }
 
     public function getId(): Uuid
     {
@@ -184,7 +193,7 @@ class Pet
         $this->updatedAt = $updatedAt;
     }
 
-    public function getDeletedAt(): ?\DateTime
+    public function getDeletedAt(): \DateTime
     {
         return $this->deletedAt;
     }

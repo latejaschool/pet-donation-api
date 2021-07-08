@@ -17,3 +17,8 @@ patch:
   path: '/pets/{id}'
   controller: App\Controller\Api\Pet\EditPetController
   methods: ['PATCH']
+
+post:
+  path: '/pets'
+  controller: App\Controller\Api\Pet\CreatePetController
+  methods: ['POST']
