@@ -1,3 +1,7 @@
 index:
   path: /admin/pettype
   controller: App\Controller\Admin\AdminPetTypeController::indexAction
+
+add:
+  path: /admin/pettype/new
+  controller: App\Controller\Admin\AdminPetTypeController::addAction
