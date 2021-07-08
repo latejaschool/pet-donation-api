@@ -1,0 +1,40 @@
+{% extends 'admin.html.twig' %}
+
+{% block page_title %}
+    Novo Usuário
+{% endblock %}
+
+{% block content %}
+
+    <div class="card card-body">
+        <form action="#" method="post">
+
+            <label for="name">Nome</label>
+            <input type="text" id="name" name="name" class="form-control">
+            <br>
+
+            <label for="email">E-mail</label>
+            <input id="email" name="email" class="form-control">
+            <br>
+
+            <label for="password">Senha</label>
+            <input type="password" id="password" name="password" class="form-control">
+            <br>
+
+            <label for="phone">Fone</label>
+            <input id="phone" name="phone" class="form-control">
+            <br>
+
+            <label for="photo">Foto</label>
+            <input type="text" id="photo" name="photo" class="form-control">
+            <br>
+
+            <button class="btn btn-primary">Enviar</button>
+        </form>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script></script>
+{% endblock %}

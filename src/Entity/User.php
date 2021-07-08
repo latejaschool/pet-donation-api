@@ -75,6 +75,7 @@ class User
         $this->id = new UuidV4();
         $this->createdAt = new \DateTime();
         $this->updatedAt = new \DateTime();
+        $this->status = true;
     }
 
     public function getId(): Uuid

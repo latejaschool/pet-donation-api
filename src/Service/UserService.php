@@ -7,6 +7,8 @@ namespace App\Service;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ObjectRepository;
+use Symfony\Component\HttpFoundation\Request;
+
 
 class UserService
 {
@@ -48,9 +50,16 @@ class UserService
         ]);
     }
 
-    public function update(string $id, User $user): void
+    public function update(Request $request, User $user): void
     {
-        
+        $user->setName($request->get('name'));
+        $user->setEmail($request->get('email'));
+        $user->setPassword($request->get(password_hash('password',PASSWORD_ARGON2I)));
+        $user->setPhone($request->get('phone'));
+        $user->setPhoto($request->get('photo'));
+
+        $this->entityManager->persist($user);
+        $this->entityManager->flush();
     }
 
     public function remove(string $id): void

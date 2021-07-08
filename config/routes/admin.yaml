@@ -17,3 +17,7 @@ admin_pet:
 admin_ngo:
   resource: admin/ngo.yaml
   name_prefix: admin_ngo_
+
+admin_user:
+  resource: admin/user.yaml
+  name_prefix: admin_user_
