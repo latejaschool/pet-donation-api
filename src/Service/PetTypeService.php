@@ -8,6 +8,7 @@ namespace App\Service;
 use App\Entity\PetType;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ObjectRepository;
+use Symfony\Component\HttpFoundation\Request;
 
 class PetTypeService
 {
@@ -46,9 +47,10 @@ class PetTypeService
         ]);
     }
 
-    public function update(string $id, PetType $petType): void
+    public function update(PetType $petType, Request $request): void
     {
-
+        $petType->setName($request->name ?? $petType->getName());
+        $this->entityManager->flush();
     }
 
     public function remove(string $id): void
