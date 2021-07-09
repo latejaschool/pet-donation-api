@@ -1,0 +1,27 @@
+{% extends 'admin.html.twig' %}
+
+{% block page_title %}
+    Nova Raça
+{% endblock %}
+
+{% block content %}
+
+    <div class="card card-body">
+        <form action="#" method="post">
+            <label for="name">Nome</label>
+            <input type="text" id="name" name="name" value="{{ breed.name }}}" class="form-control">
+            <br>
+
+            <label for="description">Descrição</label>
+            <textarea id="description" name="description" class="form-control">{{ breed.description }}</textarea>
+            <br>
+
+            <button class="btn btn-primary">Enviar</button>
+        </form>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script></script>
+{% endblock %}

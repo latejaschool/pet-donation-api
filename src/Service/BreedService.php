@@ -8,6 +8,7 @@ use App\Entity\Breed;
 use App\Exception\BreedNotFoundException;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ObjectRepository;
+use Symfony\Component\HttpFoundation\Request;
 
 class BreedService
 {
@@ -46,9 +47,13 @@ class BreedService
         ]);
     }
 
-    public function update(string $id, Breed $breed): void
+    public function update(Request $request, Breed $breed): void
     {
+        $breed->setName($request->get('name'));
+        $breed->setDescription($request->get('description'));
 
+        $this->entityManager->persist($breed);
+        $this->entityManager->flush();
     }
 
     public function remove(string $id): void

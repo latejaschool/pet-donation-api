@@ -19,7 +19,7 @@
                     <td>{{ breed.name }}</td>
                     <td>{{ breed.description }}</td>
                     <td>
-                        <button class="btn btn-outline-warning">Editar</button>
+                        <a href="{{ path('breed_edit', {id: breed.id}) }}"class="btn btn-outline-warning">Editar</a>
                         <button onclick="confirmRemove('{{ breed.id }}')" class="btn btn-outline-danger">Excluir</button>
                     </td>
                 </tr>
