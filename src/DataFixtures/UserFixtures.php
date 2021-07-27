@@ -17,6 +17,8 @@ class UserFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
+        $password = password_hash('12345678', PASSWORD_ARGON2I);
+
         for ($i = 1; $i <= self::USER_QUANTITY; $i++) {
             $user = new User();
             $user->setName("Usuário Teste{$i}");
@@ -24,7 +26,7 @@ class UserFixtures extends Fixture
             $user->setPhoto('https://i1.wp.com/www.institutoniemeyer.org/wp-content/uploads/2018/09/teste.png');
             $user->setCreatedAt(new \DateTime());
             $user->setUpdatedAt(new \DateTime());
-            $user->setPassword(password_hash('12345678', PASSWORD_ARGON2I));
+            $user->setPassword($password);
             $user->setPhone('8599999999');
             $user->setRoles([]);
             $user->setStatus(true);
