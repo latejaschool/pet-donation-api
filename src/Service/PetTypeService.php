@@ -47,7 +47,7 @@ class PetTypeService
         ]);
     }
 
-    public function update(PetType $petType, Request $request): void
+    public function update(PetType $petType, \stdClass $request): void
     {
         $petType->setName($request->name ?? $petType->getName());
         $this->entityManager->flush();
